@@ -1,0 +1,9 @@
+
+@mixin border($style, $width, $color, $radius) {
+    border: {
+        style: $style;
+        width: $width;
+        color: $color;
+        radius: $radius;
+    }
+}

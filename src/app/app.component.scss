@@ -1,0 +1,15 @@
+@import "../styles/core";
+
+:host {
+  .toolbar {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background-color: $colorPrimary;
+    color: white;
+
+    img {
+      margin: 0 20px;
+    }
+  }
+}
