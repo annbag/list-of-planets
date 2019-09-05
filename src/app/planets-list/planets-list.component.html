@@ -3,7 +3,7 @@
   <div class="planets-list">
     <div class="planet" *ngFor="let planet of planetsList.results">
       <p class="name">{{planet.name}}</p>
-      <button class="see-more">See details</button>
+      <button class="see-more" routerLink="/planet/1">See details</button>
     </div>
   </div>
 </section>

@@ -1,0 +1,61 @@
+@import '../../styles/core';
+
+:host {
+  .back {
+    margin-top: 20px;
+    padding: 5px 10px;
+    @include border(solid, 1px, $colorPrimary, 6px);
+    background-color: $colorPrimary;
+    color: $colorBackground;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 250ms ease;
+
+    @media (min-width: 640px) {
+      padding: 8px 16px;
+      font-size: 14px;
+    }
+
+    @media (min-width: 1024px) {
+      &:hover {
+        background-color: rgba($colorPrimary, 0.8);
+      }
+    }
+  }
+
+  .card {
+    margin: 20px 0 50px;
+    padding: 0 20px 20px;
+    @include border(solid, 1px, $colorLightGray, 0);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 90%;
+    -webkit-box-shadow: 0 0 15px 0 rgba(136, 136, 136, 1);
+    -moz-box-shadow: 0 0 15px 0 rgba(136, 136, 136, 1);
+    box-shadow: 0 0 15px 0 rgba(136, 136, 136, 1);
+
+    @media (min-width: 460px) {
+      width: 400px;
+    }
+
+    .headline {
+      position: relative;
+      padding-bottom: 20px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      &:after {
+        position: absolute;
+        content: '';
+        top: 100%;
+        right: -20px;
+        left: -20px;
+        height: 1px;
+        background-color: $colorLightGray;
+      }
+    }
+  }
+}

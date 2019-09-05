@@ -1,1 +1,16 @@
-<p>planet-details works!</p>
+<section class="container">
+  <button class="back" [routerLink]="'/'">Back</button>
+  <div class="card">
+    <h2 class=headline>{{planetDetails.name}}</h2>
+    <p>Rotation period: {{planetDetails.rotation_period}}</p>
+    <p>Orbital period: {{planetDetails.orbital_period}}</p>
+    <p>Diameter: {{planetDetails.diameter}}</p>
+    <p>Climate: {{planetDetails.climate}}</p>
+    <p>Gravity: {{planetDetails.gravity}}</p>
+    <p>Terrain: {{planetDetails.terrain}}</p>
+    <p>Surface water: {{planetDetails.surface_water}}</p>
+    <p>Population: {{planetDetails.population}}</p>
+    <p>Created: {{planetDetails.created}}</p>
+    <p>Edited: {{planetDetails.edited}}</p>
+  </div>
+</section>
