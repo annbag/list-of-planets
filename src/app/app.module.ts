@@ -4,10 +4,14 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PlanetDetailsComponent } from './planet-details/planet-details.component';
+import { PlanetsListComponent } from './planets-list/planets-list.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PlanetDetailsComponent,
+    PlanetsListComponent
   ],
   imports: [
     BrowserModule,

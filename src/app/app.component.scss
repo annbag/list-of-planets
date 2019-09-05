@@ -1,13 +1,15 @@
-@import "../styles/core";
+@import '../styles/core';
 
 :host {
-  .toolbar {
+  .header {
     height: 60px;
-    display: flex;
-    align-items: center;
     background-color: $colorPrimary;
     color: white;
-
+    .toolbar {
+      height: 60px;
+      display: flex;
+      align-items: center;
+    }
     img {
       margin: 0 20px;
     }
