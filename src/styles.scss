@@ -18,6 +18,9 @@ body {
         color: $colorBackground;
     }
 }
+* {
+  box-sizing: border-box;
+}
 
 .container {
     margin: {

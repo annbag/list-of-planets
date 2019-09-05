@@ -1,1 +1,9 @@
-<p>planets-list works!</p>
+<section class="container">
+  <h2 class="title">List of Planets:</h2>
+  <div class="planets-list">
+    <div class="planet" *ngFor="let planet of planetsList.results">
+      <p class="name">{{planet.name}}</p>
+      <button class="see-more">See details</button>
+    </div>
+  </div>
+</section>
