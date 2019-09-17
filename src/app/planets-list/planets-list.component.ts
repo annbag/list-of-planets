@@ -9,11 +9,11 @@ import { PlanetListPage } from './planets';
 })
 export class PlanetsListComponent implements OnInit {
 
-  public perPage: number;
+  private perPage: number;
   public planetsList;
   public nrPage: number;
   public pages: Array<number> = [];
-  public totalPages: number;
+  private totalPages: number;
   public index: number;
 
   constructor(private planetsListService: PlanetsListService) { }
@@ -30,11 +30,10 @@ export class PlanetsListComponent implements OnInit {
     .subscribe(planets => {
       this.planetsList = planets;
       this.calculatePages();
-      console.log(this.planetsList);
     });
   }
 
-  public calculateIndex() {
+  private calculateIndex() {
     this.index = this.perPage * (this.nrPage - 1) + 2;
   }
 
@@ -42,7 +41,7 @@ export class PlanetsListComponent implements OnInit {
     event.preventDefault();
     if (this.nrPage > 1) {
       this.nrPage--;
-      console.log(this.nrPage);
+      this.getPlanets();
     }
   }
 
@@ -50,14 +49,14 @@ export class PlanetsListComponent implements OnInit {
     event.preventDefault();
     if (this.nrPage < this.totalPages) {
       this.nrPage++;
-      console.log(this.nrPage);
+      this.getPlanets();
     }
   }
 
   public goToPage(page: number, event: Event) {
     event.preventDefault();
     this.nrPage = page;
-    console.log(this.nrPage);
+    this.getPlanets();
   }
 
   private calculatePages() {
