@@ -9,9 +9,13 @@
       height: 60px;
       display: flex;
       align-items: center;
-    }
-    img {
-      margin: 0 20px;
+      .icon {
+        margin-right: 10px;
+      }
+      .app-title {
+        color: $colorBackground;
+        text-decoration: none;
+      }
     }
   }
 }

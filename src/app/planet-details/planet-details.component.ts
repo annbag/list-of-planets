@@ -11,7 +11,8 @@ export class PlanetDetailsComponent implements OnInit {
 
   public planetDetails;
 
-  constructor(private planetDetailsService: PlanetDetailsService,
+  constructor(
+    private planetDetailsService: PlanetDetailsService,
     private route: ActivatedRoute) { }
 
   ngOnInit() {
