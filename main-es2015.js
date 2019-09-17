@@ -58,7 +58,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<section class=\"container\">\n  <h2 class=\"title\">List of Planets:</h2>\n  <div class=\"planets-list\">\n    <div class=\"planet\" *ngFor=\"let planet of planetsList?.results\">\n      <p class=\"name\">{{planet.name}}</p>\n      <button class=\"see-more\" routerLink=\"/planet/1\">See details</button>\n    </div>\n  </div>\n  <div class=\"pagination\" *ngIf=\"planetsList?.results?.length\">\n    <ul>\n      <li>\n        <a href=\"#\" (click)=goToPrevPage($event)>&lt; Poprzednia</a>\n      </li>\n      <li *ngFor=\"let p of pages\">\n        <a [class.active]=\"p === nrPage - 1\" href=\"#\" (click)=\"goToPage(p + 1, $event)\">{{p+1}}</a>\n      </li>\n      <li>\n        <a href=\"#\" (click)=goToNextPage($event)>Następna &gt;</a>\n      </li>\n    </ul>\n  </div>\n</section>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<section class=\"container\">\n  <h2 class=\"title\">List of Planets:</h2>\n  <div class=\"planets-list\">\n    <div class=\"planet\" *ngFor=\"let planet of planetsList?.results; let i = index\">\n      <p class=\"name\">{{planet.name}}</p>\n      <button class=\"see-more\" routerLink=\"/planet/{{i + 2 + (perPage * (nrPage -1))}}\">See details</button>\n    </div>\n  </div>\n  <div class=\"pagination\" *ngIf=\"planetsList?.results?.length\">\n    <ul>\n      <li>\n        <a href=\"#\" (click)=goToPrevPage($event)>&lt; Poprzednia</a>\n      </li>\n      <li *ngFor=\"let p of pages\">\n        <a [class.active]=\"p === nrPage - 1\" href=\"#\" (click)=\"goToPage(p + 1, $event)\">{{p+1}}</a>\n      </li>\n      <li>\n        <a href=\"#\" (click)=goToNextPage($event)>Następna &gt;</a>\n      </li>\n    </ul>\n  </div>\n</section>\n");
 
 /***/ }),
 
@@ -456,18 +456,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _planet_details_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./planet-details.service */ "./src/app/planet-details/planet-details.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+
 
 
 
 let PlanetDetailsComponent = class PlanetDetailsComponent {
-    constructor(planetDetailsService) {
+    constructor(planetDetailsService, route) {
         this.planetDetailsService = planetDetailsService;
+        this.route = route;
     }
     ngOnInit() {
         this.getPlanetDetails();
     }
     getPlanetDetails() {
-        this.planetDetailsService.getPlanetDetails()
+        const id = this.route.snapshot.params.id;
+        this.planetDetailsService.getPlanetDetails(id)
             .subscribe(details => {
             this.planetDetails = details;
             console.log(this.planetDetails);
@@ -475,7 +479,8 @@ let PlanetDetailsComponent = class PlanetDetailsComponent {
     }
 };
 PlanetDetailsComponent.ctorParameters = () => [
-    { type: _planet_details_service__WEBPACK_IMPORTED_MODULE_2__["PlanetDetailsService"] }
+    { type: _planet_details_service__WEBPACK_IMPORTED_MODULE_2__["PlanetDetailsService"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"] }
 ];
 PlanetDetailsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -511,8 +516,8 @@ let PlanetDetailsService = class PlanetDetailsService {
     constructor(httpClient) {
         this.httpClient = httpClient;
     }
-    getPlanetDetails() {
-        const url = `${_environments_environment__WEBPACK_IMPORTED_MODULE_1__["environment"].apiPlanetUrl}/planets/1/`;
+    getPlanetDetails(id) {
+        const url = `${_environments_environment__WEBPACK_IMPORTED_MODULE_1__["environment"].apiPlanetUrl}${id}/`;
         return this.httpClient.get(url);
     }
 };
@@ -561,11 +566,11 @@ __webpack_require__.r(__webpack_exports__);
 let PlanetsListComponent = class PlanetsListComponent {
     constructor(planetsListService) {
         this.planetsListService = planetsListService;
-        this.perPage = 10;
         this.pages = [];
     }
     ngOnInit() {
         this.nrPage = 1;
+        this.perPage = 10;
         this.getPlanets();
     }
     getPlanets() {
@@ -593,12 +598,13 @@ let PlanetsListComponent = class PlanetsListComponent {
     goToPage(page, event) {
         event.preventDefault();
         this.nrPage = page;
+        console.log(this.nrPage);
     }
     calculatePages() {
         this.totalPages = Math.ceil(this.planetsList.count / this.perPage);
         this.pages = [];
-        let minPage = 0;
-        let maxPage = this.totalPages;
+        const minPage = 0;
+        const maxPage = this.totalPages;
         for (let i = minPage; i < maxPage; i++) {
             this.pages.push(i);
         }
