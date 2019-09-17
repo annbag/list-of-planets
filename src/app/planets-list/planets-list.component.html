@@ -12,7 +12,7 @@
         <a href="#" (click)=goToPrevPage($event)>&lt; Poprzednia</a>
       </li>
       <li *ngFor="let p of pages">
-        <a [class.active]="p === nrPage - 1" href="#" (click)="goToPage(p, $event)">{{p+1}}</a>
+        <a [class.active]="p === nrPage - 1" href="#" (click)="goToPage(p + 1, $event)">{{p+1}}</a>
       </li>
       <li>
         <a href="#" (click)=goToNextPage($event)>Następna &gt;</a>
