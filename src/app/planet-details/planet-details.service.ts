@@ -11,8 +11,8 @@ export class PlanetDetailsService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public getPlanetDetails(): Observable<PlanetDetails> {
-    const url = `${environment.apiPlanetUrl}/planets/1/`;
+  public getPlanetDetails(id): Observable<PlanetDetails> {
+    const url = `${environment.apiPlanetUrl}${id}/`;
     return this.httpClient.get<PlanetDetails>(url);
   }
 }

@@ -1,9 +1,9 @@
 <section class="container">
   <h2 class="title">List of Planets:</h2>
   <div class="planets-list">
-    <div class="planet" *ngFor="let planet of planetsList?.results">
+    <div class="planet" *ngFor="let planet of planetsList?.results; let i = index">
       <p class="name">{{planet.name}}</p>
-      <button class="see-more" routerLink="/planet/1">See details</button>
+      <button class="see-more" routerLink="/planet/{{i + 2 + (perPage * (nrPage -1))}}">See details</button>
     </div>
   </div>
   <div class="pagination" *ngIf="planetsList?.results?.length">

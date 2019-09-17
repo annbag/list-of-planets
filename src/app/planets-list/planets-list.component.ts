@@ -9,7 +9,7 @@ import { PlanetListPage } from './planets';
 })
 export class PlanetsListComponent implements OnInit {
 
-  private perPage = 10;
+  public perPage: number;
   public planetsList;
   public nrPage: number;
   public pages: Array<number> = [];
@@ -19,6 +19,7 @@ export class PlanetsListComponent implements OnInit {
 
   ngOnInit() {
     this.nrPage = 1;
+    this.perPage = 10;
     this.getPlanets();
   }
 
@@ -45,19 +46,19 @@ export class PlanetsListComponent implements OnInit {
       this.nrPage++;
       console.log(this.nrPage);
     }
-
   }
 
   public goToPage(page: number, event: Event) {
     event.preventDefault();
     this.nrPage = page;
+    console.log(this.nrPage);
   }
 
   private calculatePages() {
     this.totalPages = Math.ceil(this.planetsList.count / this.perPage);
     this.pages = [];
-    let minPage = 0;
-    let maxPage = this.totalPages;
+    const minPage = 0;
+    const maxPage = this.totalPages;
     for (let i = minPage; i < maxPage; i++) {
       this.pages.push(i);
     }
