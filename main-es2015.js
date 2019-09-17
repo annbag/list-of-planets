@@ -58,7 +58,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<section class=\"container\">\n  <h2 class=\"title\">List of Planets:</h2>\n  <div class=\"planets-list\">\n    <div class=\"planet\" *ngFor=\"let planet of planetsList?.results; let i = index\">\n      <p class=\"name\">{{planet.name}}</p>\n      <button class=\"see-more\" routerLink=\"/planet/{{i + 2 + (perPage * (nrPage -1))}}\">See details</button>\n    </div>\n  </div>\n  <div class=\"pagination\" *ngIf=\"planetsList?.results?.length\">\n    <ul>\n      <li>\n        <a href=\"#\" (click)=goToPrevPage($event)>&lt; Poprzednia</a>\n      </li>\n      <li *ngFor=\"let p of pages\">\n        <a [class.active]=\"p === nrPage - 1\" href=\"#\" (click)=\"goToPage(p + 1, $event)\">{{p+1}}</a>\n      </li>\n      <li>\n        <a href=\"#\" (click)=goToNextPage($event)>Następna &gt;</a>\n      </li>\n    </ul>\n  </div>\n</section>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<section class=\"container\">\n  <h2 class=\"title\">List of Planets:</h2>\n  <div class=\"planets-list\">\n    <div class=\"planet\" *ngFor=\"let planet of planetsList?.results; let i = index\">\n      <p class=\"name\">{{planet.name}}</p>\n      <button class=\"see-more\" routerLink=\"/planet/{{i + index}}\">See details</button>\n    </div>\n  </div>\n  <div class=\"pagination\" *ngIf=\"planetsList?.results?.length\">\n    <ul>\n      <li>\n        <a href=\"#\" (click)=goToPrevPage($event)>&lt; Poprzednia</a>\n      </li>\n      <li *ngFor=\"let p of pages\">\n        <a [class.active]=\"p === nrPage - 1\" href=\"#\" (click)=\"goToPage(p + 1, $event)\">{{p+1}}</a>\n      </li>\n      <li>\n        <a href=\"#\" (click)=goToNextPage($event)>Następna &gt;</a>\n      </li>\n    </ul>\n  </div>\n</section>\n");
 
 /***/ }),
 
@@ -572,6 +572,7 @@ let PlanetsListComponent = class PlanetsListComponent {
         this.nrPage = 1;
         this.perPage = 10;
         this.getPlanets();
+        this.calculateIndex();
     }
     getPlanets() {
         this.planetsListService.getPlanets(this.nrPage)
@@ -580,6 +581,9 @@ let PlanetsListComponent = class PlanetsListComponent {
             this.calculatePages();
             console.log(this.planetsList);
         });
+    }
+    calculateIndex() {
+        this.index = this.perPage * (this.nrPage - 1) + 2;
     }
     goToPrevPage(event) {
         event.preventDefault();
