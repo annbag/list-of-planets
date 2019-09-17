@@ -24,7 +24,6 @@ export class PlanetDetailsComponent implements OnInit {
     this.planetDetailsService.getPlanetDetails(id)
     .subscribe(details => {
       this.planetDetails = details;
-      console.log(this.planetDetails);
     });
   }
 }
