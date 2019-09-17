@@ -2,7 +2,6 @@
 
 :host {
   .search {
-    position: relative;
     .search-input {
       width: 280px;
       @include border(none, 0, none, 5px);
@@ -11,12 +10,6 @@
       background-color: lightgray;
       padding: 8px 16px;
       color: $colorTextPrimary;
-    }
-    .search-icon {
-      position: absolute;
-      top: 18px;
-      left: 260px;
-      color: #757575;
     }
   }
 
