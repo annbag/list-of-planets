@@ -1,6 +1,7 @@
 # PlanetsList
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.2.
+
 Application that presents list of planets. I used external service (https://swapi.co/api/planets/) to display data.
 
 ## Demo
