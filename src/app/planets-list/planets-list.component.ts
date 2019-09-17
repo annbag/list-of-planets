@@ -14,6 +14,7 @@ export class PlanetsListComponent implements OnInit {
   public nrPage: number;
   public pages: Array<number> = [];
   public totalPages: number;
+  public index: number;
 
   constructor(private planetsListService: PlanetsListService) { }
 
@@ -21,6 +22,7 @@ export class PlanetsListComponent implements OnInit {
     this.nrPage = 1;
     this.perPage = 10;
     this.getPlanets();
+    this.calculateIndex();
   }
 
   private getPlanets() {
@@ -30,6 +32,10 @@ export class PlanetsListComponent implements OnInit {
       this.calculatePages();
       console.log(this.planetsList);
     });
+  }
+
+  public calculateIndex() {
+    this.index = this.perPage * (this.nrPage - 1) + 2;
   }
 
   public goToPrevPage(event: Event) {
