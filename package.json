@@ -9,7 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "predeploy": "ng build --base-href=/list-of-planets/",
-    "deploy": "NODE_DEBUG=gh-pages gh-pages -d dist/planets-list"
+    "deploy": "gh-pages -d dist/planets-list"
   },
   "private": true,
   "dependencies": {
