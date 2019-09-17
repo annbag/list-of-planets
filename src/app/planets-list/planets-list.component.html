@@ -1,9 +1,22 @@
 <section class="container">
   <h2 class="title">List of Planets:</h2>
   <div class="planets-list">
-    <div class="planet" *ngFor="let planet of planetsList.results">
+    <div class="planet" *ngFor="let planet of planetsList?.results">
       <p class="name">{{planet.name}}</p>
       <button class="see-more" routerLink="/planet/1">See details</button>
     </div>
+  </div>
+  <div class="pagination" *ngIf="planetsList?.results?.length">
+    <ul>
+      <li>
+        <a href="#" (click)=goToPrevPage($event)>&lt; Poprzednia</a>
+      </li>
+      <li *ngFor="let p of pages">
+        <a [class.active]="p === nrPage - 1" href="#" (click)="goToPage(p, $event)">{{p+1}}</a>
+      </li>
+      <li>
+        <a href="#" (click)=goToNextPage($event)>Następna &gt;</a>
+      </li>
+    </ul>
   </div>
 </section>

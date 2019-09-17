@@ -1,14 +1,14 @@
 <section class="container">
   <button class="back" [routerLink]="'/'">Back</button>
   <div class="card">
-    <h2 class=headline>{{planetDetails.name}}</h2>
-    <p>Rotation period: {{planetDetails.rotation_period}} hours</p>
-    <p>Orbital period: {{planetDetails.orbital_period}} days</p>
-    <p>Diameter: {{planetDetails.diameter}} km</p>
-    <p>Climate: {{planetDetails.climate}}</p>
-    <p>Gravity: {{planetDetails.gravity}}</p>
-    <p>Terrain: {{planetDetails.terrain}}</p>
-    <p>Surface water: {{planetDetails.surface_water}}</p>
-    <p>Population: {{planetDetails.population}} people</p>
+    <h2 class=headline>{{planetDetails?.name}}</h2>
+    <p>Rotation period: {{planetDetails?.rotation_period}} hours</p>
+    <p>Orbital period: {{planetDetails?.orbital_period}} days</p>
+    <p>Diameter: {{planetDetails?.diameter}} km</p>
+    <p>Climate: {{planetDetails?.climate}}</p>
+    <p>Gravity: {{planetDetails?.gravity}}</p>
+    <p>Terrain: {{planetDetails?.terrain}}</p>
+    <p>Surface water: {{planetDetails?.surface_water}}</p>
+    <p>Population: {{planetDetails?.population}} people</p>
   </div>
 </section>

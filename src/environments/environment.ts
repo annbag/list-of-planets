@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiPlanetUrl: 'https://swapi.co/api'
+  apiPlanetUrl: 'https://swapi.co/api/planets/'
 };
 
 /*
