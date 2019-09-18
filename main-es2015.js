@@ -577,13 +577,13 @@ let PlanetsListComponent = class PlanetsListComponent {
         this.nrPage = 1;
         this.perPage = 10;
         this.getPlanets();
-        this.calculateIndex();
     }
     getPlanets() {
         this.planetsListService.getPlanets(this.nrPage)
             .subscribe(planets => {
             this.planetsList = planets;
             this.calculatePages();
+            this.calculateIndex();
         });
     }
     calculateIndex() {
