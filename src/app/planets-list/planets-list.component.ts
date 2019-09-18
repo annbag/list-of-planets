@@ -22,7 +22,6 @@ export class PlanetsListComponent implements OnInit {
     this.nrPage = 1;
     this.perPage = 10;
     this.getPlanets();
-    this.calculateIndex();
   }
 
   private getPlanets() {
@@ -30,6 +29,7 @@ export class PlanetsListComponent implements OnInit {
     .subscribe(planets => {
       this.planetsList = planets;
       this.calculatePages();
+      this.calculateIndex();
     });
   }
 
